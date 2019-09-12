@@ -2,14 +2,14 @@ using DelimitedFiles
 
 # write_to_smat
 function writeToSMAT(M,filename)
+    #if unweighted
     if size(M,2) == 2
         M = hcat(M,ones(Int,size(M,1)))
     end
     m = maximum(M)+1
-    n = maximum(M)+1
     nz = size(M,1)
     open(filename, "w") do f
-        write(f, "$m   $n   $nz \n")
+        write(f, "$m   $m   $nz \n")
         writedlm(f,M)
     end
 end
@@ -45,5 +45,6 @@ function run_script()
         new_connections = hcat(ones(Int64,length(connectto)).*curplayerid_inlist,connectto)
         edge_list = vcat(edge_list,new_connections)
     end
+edge_list.-=1
 return edge_list,names_data
 end
