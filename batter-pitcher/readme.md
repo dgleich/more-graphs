@@ -24,3 +24,10 @@ Top of the file looks like:
 
 ```
 The top line indicates that there are 19952 nodes, and 815493 edges. The rest of the lines are `<playerid_1> <playerid_2> 1`, where is the first player `<playerid_1>` was the batter in that match, and the second player `<playerid_2>` is the pitcher. This is an unweighted graph, and thus the weights are understood to be 1.
+
+Turns out, this data is much smaller and not all the 19952 players are there. To get the connected graph:
+```
+using MatrixNetworks
+A = sparse(myedge_list[:,1],myedge_list[:,2],1,maximum(myedge_list),maximum(myedge_list));
+largest_component(A)[1]
+```

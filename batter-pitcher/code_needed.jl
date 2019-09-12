@@ -30,7 +30,7 @@ function run_script()
     names_data = hcat(name_ids,names)
 
     allfiles = readdir("pitcherinfo")
-    edge_list = Array{Int64}(undef,0,2)
+    myedge_list = Array{Int64}(undef,0,2)
     for i = 1:length(allfiles)
         fileid = allfiles[i]
         Mi = readdlm(joinpath("pitcherinfo",fileid))
@@ -43,8 +43,8 @@ function run_script()
         curplayerid = fileid[1:findfirst("_",fileid)[1]-1]
         curplayerid_inlist = findfirst(name_ids.==curplayerid)
         new_connections = hcat(ones(Int64,length(connectto)).*curplayerid_inlist,connectto)
-        edge_list = vcat(edge_list,new_connections)
+        myedge_list = vcat(myedge_list,new_connections)
     end
-edge_list.-=1
-return edge_list,names_data
+myedge_list.-=1
+return myedge_list,names_data
 end
