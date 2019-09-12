@@ -11,7 +11,7 @@
 - `batter_pitcher_edges.smat`: smat file of batter pitcher games, where players are indexed from zero. 
 Top of the file looks like:
 ```
-`19952   19952   815493 
+19952   19952   815493 
 1	12	1
 1	26	1
 1	47	1
@@ -23,4 +23,4 @@ Top of the file looks like:
 1	402	1
 
 ```
-`The top line indicates that there are 19952 nodes, and 815493 edges. The rest of the lines are `<playerid_1> <playerid_2> 1`, where is the first player `<playerid_1>` was the batter in that match, and the second player `<playerid_2>` is the pitcher. This is an unweighted graph, and thus the weights are understood to be 1.
+The top line indicates that there are 19952 nodes, and 815493 edges. The rest of the lines are `<playerid_1> <playerid_2> 1`, where is the first player `<playerid_1>` was the batter in that match, and the second player `<playerid_2>` is the pitcher. This is an unweighted graph, and thus the weights are understood to be 1.
