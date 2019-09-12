@@ -10,3 +10,8 @@ For each graph dataset, we'll have a brief description, along with code to gener
       note = "Accessed on",
     }      
 
+## Other graph repositories
+* SuiteSparse Matrix Collection: https://sparse.tamu.edu/
+* Colorado Index of Complex Networks: https://icon.colorado.edu/
+* Koblenz Network Collection: http://konect.uni-koblenz.de/
+* Stanford Network Analysis Project: http://snap.stanford.edu
