@@ -39,7 +39,8 @@ def make_wheres_waldo_graphs(map_files_location):
     -------------------------------------------------------------------------"""
     search_radius = 25
 
-    sift_object_location = map_files_location + "/sift_objects"
+    sift_object_location = map_files_locations + "/sift_objects"
+
     if not os.path.exists(sift_object_location):
         os.mkdir(sift_object_location)
 
@@ -78,16 +79,16 @@ def make_wheres_waldo_graphs(map_files_location):
         print(f"final search radius is {search_radius}")
 
         m = len(matrix_non_zeros)*2
-        matrix_output_file = alter_file_name(file, '_matrix_non_zeros.smat',
+        matrix_output_file = alter_file_name(file, '.smat',
                                   ignore_post_fix=True)
 
         with open(sift_object_location +'/' + matrix_output_file,'w') as wptr:
             wptr.write("{0:d}\t{1:d}\t{2:d}\n".format(n, n, m))
             for ([i,j],w) in matrix_non_zeros:
-                wptr.write("{0:d}\t{1:d}\t{2:f}\n".format(i, j, w))
-                wptr.write("{0:d}\t{1:d}\t{2:f}\n".format(j, i, w))
+                wptr.write("{0:d}\t{1:d}\t{2:d}\n".format(i, j, w))
+                wptr.write("{0:d}\t{1:d}\t{2:d}\n".format(j, i, w))
 
-        mapping_file = alter_file_name(file,"_keypoint_coordinates.xy",
+        mapping_file = alter_file_name(file,".xy",
                                        ignore_post_fix=True)
         with open(sift_object_location + '/' + mapping_file,'w') as f:
             for i,j in index_map:
@@ -95,7 +96,7 @@ def make_wheres_waldo_graphs(map_files_location):
 
         print("finished making SIFT graph for {}\n".format(file))
 
-s
+
 if __name__ == "__main__":
     map_files_location = None
     make_wheres_waldo_graphs(map_files_location)
