@@ -22,5 +22,5 @@ We use the following package to segment each article into words.
 ## Files
 + words_coocurrence.labels
 	* the actual words for each row
-+ maddow-edge-list.smat
++ words_coocurrence.smat
 	* An .smat representation of the coocurrance graph.
