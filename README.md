@@ -5,8 +5,9 @@ For each graph dataset, we'll have a brief description, along with code to gener
 
     @misc{more-graphs,
       title = "More graph datasets",
-      author = "Hopefully many contributors",
+      author = "David F. Gleich and Charles Colley and Omar Eldaghar and Meng Liu and Huda Nassar and Haoteng Yin",
       howpublished = "Github: dgleich/more-graphs",
+      year = {2019},
       note = "Accessed on",
     }      
 
