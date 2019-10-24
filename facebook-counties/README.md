@@ -37,6 +37,8 @@ Downloading the raw data
 ```
 wget https://static01.nyt.com/newsgraphics/2018/08/13/fb-friendships/c15239849eab44f7bc5b2cd9d17c67821dfb071f/county2county.binary
 
+wget https://static01.nyt.com/newsgraphics/2018/08/13/fb-friendships/c15239849eab44f7bc5b2cd9d17c67821dfb071f/county-info.csv
+
 wget
 https://static01.nyt.com/newsgraphics/2018/08/13/fb-friendships/c15239849eab44f7bc5b2cd9d17c67821dfb071f/top.csv
 
@@ -69,6 +71,23 @@ which are stored as corrections in the `-nonsym.smat` file
 
 The `-top10.smat` just lists the top10 closest connections
 for each county.
+
+Each entry is between 1 and 7 with 7 indicating super-strong
+connection (see the NYTimes page) and 1 indicating the weakest
+connect. Note that the original NYTimes data has entries between 1 and 8
+where every entry is at least 1. We filtered these to 0-7 and skipped
+all the ones.
+
+There are disconnected counties in Virginia in our data.
+
+```
+"Covington, VA"    
+"Emporia, VA"      
+"Fairfax City, VA"      
+"Lexington, VA"    
+"Manassas Park, VA"
+"Martinsville, VA"
+```
 
 The metadata
 ------------

@@ -1,5 +1,13 @@
 ## Get county info
+# In retrospect, the MUCH easier thing to do would have been to use the
+# county-info.csv file to get the FIPS code to lookup in the wikipedia
+# data. But this is how I did it initially...
 using JSON
+## load county-info.csv from the website
+using DelimitedFiles
+cinfo,header = readdlm("county-info.csv",',',header=true)
+cid2index = Dict(((cinfo[i,1]), Int(cinfo[i,2]+1)) for i in 1:size(cinfo,1))
+
 ##
 mapdata = JSON.parsefile("final-map.json")
 counties = mapdata["objects"]["counties"]["geometries"]
@@ -87,18 +95,24 @@ end
 ## Spit out metadata
 # we want two files: xy coords with the lat/long
 # -metadata.csv with the population and area
-# build the permutation
-rows = zeros(Int,0)
-for g in geoids
-  push!(rows, findfirst(info_geoids .== g))
+# build the permutation, here, we have to lookup the geoid to get the id in the
+# matrix
+rows = zeros(Int,length(geoids))
+perm = zeros(Int,length(geoids))
+for (i,g) in enumerate(geoids)
+  gnum = parse(Int,g)
+  row = cid2index[gnum]
+  perm[row] = i
+  rows[row]= findfirst(info_geoids .== g)
 end
+
 ## join state and name
-names_states = names .* ", ".*info_state[rows]
+names_states = names[perm] .* ", ".*info_state[rows]
 ## Quick verifyication of data
 [info_name[rows][1:10] names_states[1:10]]
-## Adjust the lat-long
+## Adjust the lat-long of the stuff on the other hemisphere
 xy = [info_lat[rows] info_long[rows]]
-xy[9,1] = -180-(180-xy[9,1])
+xy[69,1] = -180-(180-xy[69,1])
 
 ##
 using DelimitedFiles

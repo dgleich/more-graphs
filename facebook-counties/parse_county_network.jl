@@ -178,30 +178,11 @@ end
 writeSMAT("facebook-county-friendship.smat", Int.(sparse(B)))
 writeSMAT("facebook-county-friendship-nonsym.smat", Int.(sparse(C)))
 
+##
 ## Let's also parse the top-10 network
 using DelimitedFiles
 topdata = Int.(readdlm("top.csv",',',skipstart=1))
 ##
-using SparseArrays
-function writeSMAT(filename::AbstractString, A::SparseMatrixCSC{T,Int}; values::Bool=true) where T
-    open(filename, "w") do outfile
-        write(outfile, join((size(A,1), size(A,2), nnz(A)), " "), "\n")
-
-        rows = rowvals(A)
-        vals = nonzeros(A)
-        m, n = size(A)
-        for j = 1:n
-           for nzi in nzrange(A, j)
-              row = rows[nzi]
-              val = vals[nzi]
-              if values
-                write(outfile, join((row-1, j-1, val), " "), "\n")
-              else
-                write(outfile, join((row-1, j-1, 1), " "), "\n")
-              end
-           end
-        end
-    end
-end
 T = sparse(topdata[:,1] .+ 1,topdata[:,2] .+ 1,1, 3142,3142 )
+##
 writeSMAT("facebook-county-friendship-top10.smat", T)
