@@ -7,7 +7,7 @@ This graph contains all the US domestic airline tickets data in 2019 Q1.
 
 Downloading the raw data
 ------------------------
-There are three files you need to download in order to build this graph.
+There are two files you need to download in order to build this graph.
 
 >  https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=247
 
