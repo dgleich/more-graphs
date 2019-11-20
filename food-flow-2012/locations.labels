@@ -1,0 +1,133 @@
+node id	identifer in data	location
+0	01-142	Birmingham-Hoover-Talladega, AL  CFS Area 
+1	01-380	Mobile-Daphne-Fairhope, AL  CFS Area 
+2	01-99999	Remainder of Alabama
+3	02-99999	Remainder of Alaska
+4	04-38060	Phoenix-Mesa-Glendale, AZ  CFS Area 
+5	04-536	Tucson-Nogales, AZ  CFS Area 
+6	04-99999	Remainder of Arizona
+7	05-99999	Remainder of Arkansas
+8	06-260	Fresno-Madera, CA  CFS Area 
+9	06-348	Los Angeles-Long Beach, CA  CFS Area 
+10	06-41740	San Diego-Carlsbad-San Marcos, CA  CFS Area 
+11	06-472	Sacramento-Roseville, CA  CFS Area 
+12	06-488	San Jose-San Francisco-Oakland, CA  CFS Area 
+13	06-99999	Remainder of California
+14	08-216	Denver-Aurora, CO  CFS Area 
+15	08-99999	Remainder of Colorado
+16	09-25540	Hartford-West Hartford-East Hartford, CT  CFS Area 
+17	09-408	New York-Newark, NY-NJ-CT-PA  CFS Area (CT Part)
+18	09-99999	Remainder of Connecticut
+19	10-428	Philadelphia-Reading-Camden, PA-NJ-DE-MD  CFS Area (DE Part)
+20	10-99999	Remainder of Delaware
+21	11-47900	Washington-Arlington-Alexandria, DC-VA-MD-WV  CFS Area (DC Part)
+22	12-300	Jacksonville-St. Marys-Palatka, FL-GA  CFS Area (FL Part)
+23	12-370	Miami-Fort Lauderdale-Port St. Lucie, FL  CFS Area 
+24	12-422	Orlando-Deltona-Daytona Beach, FL  CFS Area 
+25	12-45300	Tampa-St. Petersburg-Clearwater, FL  CFS Area 
+26	12-99999	Remainder of Florida
+27	13-122	Atlanta-Athens-Clarke County-Sandy Springs, GA  CFS Area 
+28	13-496	Savannah-Hinesville-Statesboro, GA  CFS Area 
+29	13-99999	Remainder of Georgia
+30	15-46520	Urban Honolulu, HI  CFS Area 
+31	15-99999	Remainder of Hawaii
+32	16-99999	Remainder of Idaho
+33	17-176	Chicago-Naperville, IL-IN-WI  CFS Area (IL Part)
+34	17-476	St. Louis-St. Charles-Farmington, MO-IL  CFS Area (IL Part)
+35	17-99999	Remainder of Illinois
+36	18-176	Chicago-Naperville, IL-IN-WI  CFS Area (IN Part)
+37	18-258	Fort Wayne-Huntington-Auburn, IN  CFS Area 
+38	18-294	Indianapolis-Carmel-Muncie, IN  CFS Area 
+39	18-99999	Remainder of Indiana
+40	19-99999	Remainder of Iowa
+41	20-312	Kansas City-Overland Park-Kansas City, MO-KS  CFS Area (KS Part)
+42	20-556	Wichita-Arkansas City-Winfield, KS  CFS Area 
+43	20-99999	Remainder of Kansas
+44	21-178	Cincinnati-Wilmington-Maysville, OH-KY-IN  CFS Area (KY Part)
+45	21-350	Louisville/Jefferson County-Elizabethtown-Madison, KY-IN  CFS Area (KY Part)
+46	21-99999	Remainder of Kentucky
+47	22-12940	Baton Rouge, LA  CFS Area 
+48	22-29340	Lake Charles, LA  CFS Area 
+49	22-406	New Orleans-Metairie-Hammond, LA-MS  CFS Area (LA Part)
+50	22-99999	Remainder of Louisiana
+51	23-99999	Remainder of Maine
+52	24-12580	Baltimore-Columbia-Towson, MD  CFS Area 
+53	24-47900	Washington-Arlington-Alexandria, DC-VA-MD-WV  CFS Area (MD Part)
+54	24-99999	Remainder of Maryland
+55	25-148	Boston-Worcester-Providence, MA-RI-NH-CT  CFS Area (MA Part)
+56	25-99999	Remainder of Massachusetts
+57	26-220	Detroit-Warren-Ann Arbor, MI  CFS Area 
+58	26-266	Grand Rapids-Wyoming-Muskegon, MI  CFS Area 
+59	26-99999	Remainder of Michigan
+60	27-378	Minneapolis-St. Paul, MN-WI  CFS Area (MN Part)
+61	27-99999	Remainder of Minnesota
+62	28-99999	Remainder of Mississippi
+63	29-312	Kansas City-Overland Park-Kansas City, MO-KS  CFS Area (MO Part)
+64	29-476	St. Louis-St. Charles-Farmington, MO-IL  CFS Area (MO Part)
+65	29-99999	Remainder of Missouri
+66	30-99999	Remainder of Montana
+67	31-420	Omaha-Council Bluffs-Fremont, NE-IA  CFS Area (NE Part)
+68	31-99999	Remainder of Nebraska
+69	32-332	Las Vegas-Henderson, NV-AZ  CFS Area (NV Part)
+70	32-99999	Remainder of Nevada
+71	33-148	Boston-Worcester-Providence, MA-RI-NH-CT  CFS Area (NH Part)
+72	33-99999	Remainder of New Hampshire
+73	34-408	New York-Newark, NY-NJ-CT-PA  CFS Area (NJ Part)
+74	34-428	Philadelphia-Reading-Camden, PA-NJ-DE-MD  CFS Area (NJ Part)
+75	35-99999	Remainder of New Mexico
+76	36-104	Albany-Schenectady, NY CFS Area
+77	36-160	Buffalo-Cheektowaga, NY  CFS Area 
+78	36-408	New York-Newark, NY-NJ-CT-PA  CFS Area (NY Part)
+79	36-464	Rochester-Batavia-Seneca Falls, NY  CFS Area 
+80	36-99999	Remainder of New York
+81	37-172	Charlotte-Concord, NC-SC  CFS Area  (NC Part)
+82	37-268	Greensboro--Winston-Salem--High Point, NC  CFS Area 
+83	37-450	Raleigh-Durham-Chapel Hill, NC  CFS Area 
+84	37-99999	Remainder of North Carolina
+85	38-99999	Remainder of North Dakota
+86	39-178	Cincinnati-Wilmington-Maysville, OH-KY-IN  CFS Area (OH Part)
+87	39-184	Cleveland-Akron-Canton, OH  CFS Area 
+88	39-198	Columbus-Marion-Zanesville, OH  CFS Area 
+89	39-212	Dayton-Springfield-Sidney, OH  CFS Area 
+90	39-99999	Remainder of Ohio
+91	40-416	Oklahoma City-Shawnee, OK  CFS Area 
+92	40-538	Tulsa-Muskogee-Bartlesville, OK  CFS Area 
+93	40-99999	Remainder of Oklahoma
+94	41-440	Portland-Vancouver-Salem, OR-WA  CFS Area (OR Part)
+95	41-99999	Remainder of Oregon
+96	42-408	New York-Newark, NY-NJ-CT-PA  CFS Area (PA Part)
+97	42-428	Philadelphia-Reading-Camden, PA-NJ-DE-MD  CFS Area (PA Part)
+98	42-430	Pittsburgh-New Castle-Weirton, PA-OH-WV  CFS Area (PA Part)
+99	42-99999	Remainder of Pennsylvania
+100	44-148	Boston-Worcester-Providence, MA-RI-NH-CT  CFS Area (RI Part)
+101	45-16700	Charleston-North Charleston-Summerville, SC  CFS Area 
+102	45-273	Greenville-Spartanburg-Anderson, SC  CFS Area 
+103	45-99999	Remainder of South Carolina
+104	46-99999	Remainder of South Dakota
+105	47-314	Knoxville-Morristown-Sevierville, TN  CFS Area 
+106	47-368	Memphis, TN-MS-AR  CFS Area (TN Part)
+107	47-400	Nashville-Davidson--Murfreesboro, TN  CFS Area 
+108	47-99999	Remainder of Tennessee
+109	48-12420	Austin-Round Rock, TX  CFS Area 
+110	48-13140	Beaumont-Port Arthur, TX  CFS Area 
+111	48-204	Corpus Christi-Kingsville-Alice, TX  CFS Area 
+112	48-206	Dallas-Fort Worth, TX-OK  CFS Area (TX Part)
+113	48-238	El Paso-Las Cruces, TX-NM  CFS Area (TX Part)
+114	48-288	Houston-The Woodlands, TX  CFS Area 
+115	48-29700	Laredo, TX   CFS Area 
+116	48-41700	San Antonio-New Braunfels, TX  CFS Area 
+117	48-99999	Remainder of Texas
+118	49-482	Salt Lake City-Provo-Orem, UT  CFS Area 
+119	49-99999	Remainder of Utah
+120	50-99999	Remainder of Vermont
+121	51-40060	Richmond, VA  CFS Area 
+122	51-47900	Washington-Arlington-Alexandria, DC-VA-MD-WV  CFS Area (VA Part)
+123	51-545	Virginia Beach-Norfolk, VA-NC  CFS Area (VA Part)
+124	51-99999	Remainder of Virginia
+125	53-440	Portland-Vancouver-Salem, OR-WA  CFS Area (WA Part)
+126	53-500	Seattle-Tacoma, WA  CFS Area 
+127	53-99999	Remainder of Washington
+128	54-99999	Remainder of West Virginia
+129	55-376	Milwaukee-Racine-Waukesha, WI  CFS Area 
+130	55-99999	Remainder of Wisconsin
+131	56-99999	Remainder of Wyoming
