@@ -6,8 +6,7 @@ import numpy as np
 # Connect to the reactome database. 
 # You might need to replace the "login_id", "login_token" with yours.
 uri = "bolt://localhost:7687"
-driver = GraphDatabase.driver(uri, auth=("neo4j", "931219"))
-#driver = GraphDatabase.driver(uri, auth=("login_id", "login_token"))
+driver = GraphDatabase.driver(uri, auth=("login_id", "login_token"))
 
 # Nodes with the following types are considered as basic nodes (i.e. they cannot be broken down).
 basic_elements = set(["ChemicalDrug","ProteinDrug","EntityWithAccessionedSequence",

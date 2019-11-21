@@ -24,7 +24,7 @@ https://reactome.org/dev/graph-database
 
 Building the graphs
 ------------------------
-In order to build the graph, you need to download the dataset from Reactome as well as install Neo4j community version. After downloading, you will need to start a Neo4j console in the backend and replace the ```user```, ```token``` in ```reactome-pathways.py``` with yours. Then simply running the ```reactome-pathways.py``` will give you the following files:
+In order to build the graph, you need to download the dataset from Reactome as well as install Neo4j community version. After downloading, you will need to start a Neo4j console in the backend and replace the ```login_id```, ```login_token``` in ```reactome-pathways.py``` with yours. Then simply running the ```reactome-pathways.py``` will give you the following files:
 
 * `reactome-pathway.smat` 
 
