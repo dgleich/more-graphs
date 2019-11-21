@@ -1,7 +1,7 @@
 Human Immune System Pathway Networks From Reactome
 ===========================
 
-Reactome is a dataset to download known pathways among proteins or compounds in human system. Each pathway has multiple reactions involved and each reaction can have multiple inputs, outputs and catalysts. The output from one reaction can be input or catalyst for another reaction. Also there will be interactions between elements. This dataset will represent all the pathways from human immune system using a simple graph. In order to do that, each reaction will be represented as a dummy node and there will be four types of edges in this graph:
+Reactome is a website to download known pathways among proteins or compounds in human system. Each pathway has multiple reactions involved and each reaction can have multiple inputs, outputs and catalysts. The output from one reaction can be input or catalyst for another reaction. Also there will be interactions between elements. This dataset will represent all the pathways from human immune system using a simple graph. In order to do that, each reaction will be represented as a dummy node and there will be four types of edges in this graph:
 
 * A ---> B, directed edge, A is a reaction dummy node and B is one of the **outputs** of A
 * C ---> A, directed edge, A is a reaction dummy node and C is one of the **inputs** of A
