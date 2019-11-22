@@ -24,10 +24,22 @@ tableData = []
 for item in tab.find_all_next('tr')[1:]:
     toAdd = []
     for tag in item.find_all('td'):
-        toAdd.append(tag.text)
+        txt = tag.text
+        #handling footnootes
+        if '[' in txt:
+            ind1 = txt.index('[')
+            ind2 = txt.index(']')
+            txt = txt[:ind1]+txt[ind2+1:]
+        toAdd.append(txt)
     #take care of char at end of lat and lon
     toAdd[-2] = toAdd[-2][:-1]
     toAdd[-1] = toAdd[-1][:-2]
+    #removing possible footnotes in county name
+    if '[' in toAdd[3]:
+        entry = toAdd[3]
+        ind1 =entry.index('[')
+        ind2 = entry.index(']')
+        toAdd[3] = entry[:ind1]+entry[ind2+1:]
     tableData.append(toAdd)
     
 #write to file 
