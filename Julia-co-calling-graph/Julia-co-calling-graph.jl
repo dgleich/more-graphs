@@ -2,10 +2,10 @@ using Pkg.Pkg.TOML
 using Printf
 
 # directory where Julia packages are stored
-pkg_dir = "/Users/mengliu/.julia/packages/"
+pkg_dir = "/Users/vaastavarora/.julia/packages/"
 
 # this variable needs to be changed based on your own installation directory
-path = "/Users/mengliu/.julia/registries/General"
+path = "/Users/vaastavarora/.juliapro/JuliaPro_v1.2.0-2/registries/JuliaPro"
 packages_dict = TOML.parsefile(joinpath(path,"Registry.toml"))["packages"]
 # this variable needs to be changed based on your own installation directory
 const STDLIB_DIR = "/Applications/Julia-1.3.app/Contents/Resources/julia/share/julia/stdlib/v1.3/"
@@ -20,40 +20,68 @@ for (i, stdlib) in enumerate(STDLIBS)
     end
 end
 
-# next, we use the first package as an example
-std_pkg_names[1]
 
-joinpath(STDLIB_DIR,std_pkg_names[1])
 
-# grab the first source file
-curr_path = joinpath(joinpath(STDLIB_DIR,std_pkg_names[1]),"src")
-src_file = readdir(curr_path)[1]
-curr_file = joinpath(curr_path,src_file)
-
-# read source file as string
-src = read(curr_file,String)
-
-# parse source file
-src_expr = Meta.parse(src)
-
-# this function will go thourgh all the expressions in the source file
+# Set of functions found so far
 found_functions = Set()
-function find_functions(expr::Union{GlobalRef,
-    LineNumberNode,String,Symbol,Bool,QuoteNode},
-    found_functions) end # do nothing
-function find_functions(expr::Expr,found_functions)
-    for arg in expr.args
-        # expr.head will store which function is called in this expression
-        if typeof(arg) == Expr
-            push!(found_functions, expr.head)
+# Dictonary of functions with function prototype as key and storing their internal invocations as payload
+function_graph = Dict()
+
+
+# Function to resolve std package name
+function resolve_path(index)
+    joinpath(STDLIB_DIR,std_pkg_names[1])
+
+    # grab the first source file
+    curr_path = joinpath(joinpath(STDLIB_DIR,std_pkg_names[index]),"src")
+    src_file = readdir(curr_path)[1]
+    curr_file = joinpath(curr_path,src_file)
+
+    # read source file as string
+    src = read(curr_file,String)
+
+    # parse source file
+    try
+        src_expr = Meta.parse(src)
+    catch err
+        println("Error in file ",index,"/",length(std_pkg_names))
+    end
+
+    return src_expr
+end
+
+# Function for graph construction
+function build_graph(exp::Expr)
+
+    if exp.head == Symbol(":function")
+        if size(exp.args)>2
+            throw(Exception)
         end
-        find_functions(arg, found_functions)
+
+
+        if exp.args[1] in found_functions
+            Nothing
+        else
+            push!(found_functions,exp.args[1])
+            function_graph[exp.args[1]] = []
+        end
+    else
+        for texp in exp.args
+            if typeof(texp) == Expr
+                build_graph(texp)
+            end
+        end
     end
 end
 
-find_functions(src_expr,found_functions)
+# Iterate all files in std package
+for i = 1:length(std_pkg_names)
+    exps = resolve_path(i)
+    build_graph(exps)
+end
+
 
 ## TODO
-# run find_functions on all source files of all packages
-# build a mapping between all possible function names and node indices
+# Fix symbol matching for functions
+# Map invoke/calls from within function
 # build co-calling graph
