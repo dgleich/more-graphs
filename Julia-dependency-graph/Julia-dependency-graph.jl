@@ -2,10 +2,10 @@ using TOML
 using Printf
 
 # this variable needs to be changed based on your own installation directory
-path = "/Users/mengliu/.julia/registries/General"
+path = joinpath(homedir(),".julia","registries","General")
 packages_dict = TOML.parsefile(joinpath(path,"Registry.toml"))["packages"]
 # this variable needs to be changed based on your own installation directory
-const STDLIB_DIR = "/Applications/Julia-1.1.app/Contents/Resources/julia/share/julia/stdlib/v1.1/"
+const STDLIB_DIR = "/Applications/Julia-1.5.app/Contents/Resources/julia/share/julia/stdlib/v1.5/"
 const STDLIBS = readdir(STDLIB_DIR)
 
 for (i, stdlib) in enumerate(STDLIBS)
