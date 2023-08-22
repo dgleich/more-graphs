@@ -2,10 +2,10 @@ using Pkg.Pkg.TOML
 using Printf
 
 # directory where Julia packages are stored
-pkg_dir = "/Users/mengliu/.julia/packages/"
+pkg_dir = "/Users/vaastavarora/.julia/packages/"
 
 # this variable needs to be changed based on your own installation directory
-path = "/Users/mengliu/.julia/registries/General"
+path = "/Users/vaastavarora/.julia/registries/General"
 packages_dict = TOML.parsefile(joinpath(path,"Registry.toml"))["packages"]
 # this variable needs to be changed based on your own installation directory
 const STDLIB_DIR = "/Applications/Julia-1.3.app/Contents/Resources/julia/share/julia/stdlib/v1.3/"
@@ -20,40 +20,109 @@ for (i, stdlib) in enumerate(STDLIBS)
     end
 end
 
-# next, we use the first package as an example
-std_pkg_names[1]
 
-joinpath(STDLIB_DIR,std_pkg_names[1])
-
-# grab the first source file
-curr_path = joinpath(joinpath(STDLIB_DIR,std_pkg_names[1]),"src")
-src_file = readdir(curr_path)[1]
-curr_file = joinpath(curr_path,src_file)
-
-# read source file as string
-src = read(curr_file,String)
-
-# parse source file
-src_expr = Meta.parse(src)
-
-# this function will go thourgh all the expressions in the source file
+# Set of functions found so far
 found_functions = Set()
-function find_functions(expr::Union{GlobalRef,
-    LineNumberNode,String,Symbol,Bool,QuoteNode},
-    found_functions) end # do nothing
-function find_functions(expr::Expr,found_functions)
-    for arg in expr.args
-        # expr.head will store which function is called in this expression
-        if typeof(arg) == Expr
-            push!(found_functions, expr.head)
+# Dictonary of functions with function prototype as key and storing their internal invocations as payload
+function_graph = Dict()
+
+
+# Function to resolve std package name
+function resolve_path(index)
+    joinpath(STDLIB_DIR,std_pkg_names[1])
+
+    # grab the first source file
+    curr_path = joinpath(joinpath(STDLIB_DIR,std_pkg_names[index]),"src")
+    src_file = readdir(curr_path)[1]
+    curr_file = joinpath(curr_path,src_file)
+
+    # read source file as string
+    src = read(curr_file,String)
+
+    src_expr = Expr(:call, :+, 1, 1)
+
+    # parse source file
+    try
+        src_expr = Meta.parse(src)
+        return src_expr
+    catch err
+        println("Error in file ",index,"/",length(std_pkg_names))
+        return Expr(:call, :+, 1, 1)
+    end
+
+end
+
+prog = """
+function nngraph(idxs::Matrix{Int32})
+  n = size(idxs, 2)
+  ei = zeros(Int,0)
+  ej = copy(ei)
+  for i=1:n
+    for k=1:size(idxs,1)
+      push!(ei, i)
+      push!(ej, idxs[k,i])
+    end
+  end
+  A = sparse(ei,ej,1.0,n,n)
+  return max.(A,A')
+end
+"""
+
+match_set = Set([Symbol("call"), Symbol(".")])
+sets = []
+# Function for graph construction
+function build_graph(exp::Expr)
+
+    println(exp.head)
+    if exp.head == Symbol("function")
+        println("Function Found")
+        #print(size(exp.args))
+        if size(exp.args)[1]>2
+            throw(Exception)
         end
-        find_functions(arg, found_functions)
+
+        t =  build_graph(exp.args[2])
+        sets = [sets; t]
+        return t
+
+    elseif exp.head in match_set
+        #println("found a call",exp.args[1])
+        t = Set([exp.args[1]])
+
+        for x in exp.args
+            if typeof(x) == Expr
+                println("about to call ",x," ",typeof(x))
+                union!(t,build_graph(x))
+            end
+        end
+
+        return t
+    else
+        t = Set()
+        for texp in exp.args
+            if typeof(texp) == Expr
+                println("about to call ",texp," ",typeof(texp))
+                union!(t,build_graph(texp))
+            end
+        end
+
+        return t
     end
 end
 
-find_functions(src_expr,found_functions)
+
+# Iterate all files in std package
+for i = 1:length(std_pkg_names)
+    exps = resolve_path(i)
+    if typeof(exps) != Nothing
+        println(exps)
+        build_graph(exps)
+    end
+    #dump(exps)
+end
+
 
 ## TODO
-# run find_functions on all source files of all packages
-# build a mapping between all possible function names and node indices
+# Fix symbol matching for functions
+# Map invoke/calls from within function
 # build co-calling graph
